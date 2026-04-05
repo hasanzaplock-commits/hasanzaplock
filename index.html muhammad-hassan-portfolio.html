@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Hassan — Founder & CEO, ZapLock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #050d1a;
+    --navy-2: #0a1628;
+    --navy-3: #0f2040;
+    --blue: #1a6cff;
+    --blue-light: #4d8fff;
+    --electric: #00c8ff;
+    --electric-dim: rgba(0,200,255,0.12);
+    --white: #f0f4ff;
+    --white-dim: rgba(240,244,255,0.55);
+    --white-dimmer: rgba(240,244,255,0.25);
+    --gold: #f5c842;
+    --border: rgba(26,108,255,0.18);
+    --card: rgba(10,22,40,0.75);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── GRID BG ── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(26,108,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,108,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(5,13,26,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--electric); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--white-dim);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.25s;
+  }
+
+  .nav-links a:hover { color: var(--electric); }
+
+  .nav-cta {
+    background: var(--blue);
+    color: var(--white) !important;
+    padding: 9px 22px;
+    border-radius: 6px;
+    font-weight: 500 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: none !important;
+    transition: background 0.25s, transform 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--blue-light) !important; color: var(--white) !important; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 60px 80px;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,108,255,0.18) 0%, transparent 70%);
+    top: -100px;
+    right: -150px;
+    pointer-events: none;
+    animation: pulse 6s ease-in-out infinite;
+  }
+
+  .hero-glow-2 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,200,255,0.1) 0%, transparent 70%);
+    bottom: 50px;
+    left: -100px;
+    pointer-events: none;
+    animation: pulse 8s ease-in-out infinite reverse;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.08); opacity: 0.7; }
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 780px; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--electric-dim);
+    border: 1px solid rgba(0,200,255,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--electric);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--electric);
+    animation: blink 1.5s ease-in-out infinite;
+  }
+
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero-name .accent { color: var(--electric); }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-weight: 500;
+    color: var(--white-dim);
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-title strong { color: var(--blue-light); font-weight: 600; }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--white-dim);
+    max-width: 560px;
+    line-height: 1.75;
+    margin-bottom: 44px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue);
+    color: var(--white);
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+  }
+
+  .btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(26,108,255,0.4); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--white);
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    border: 1px solid var(--border);
+    transition: all 0.25s;
+  }
+
+  .btn-outline:hover { border-color: var(--electric); color: var(--electric); transform: translateY(-2px); }
+
+  .hero-stats {
+    position: absolute;
+    right: 60px;
+    bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 2;
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 24px;
+    backdrop-filter: blur(12px);
+    text-align: center;
+    min-width: 140px;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--electric);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--white-dimmer);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 60px;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--electric);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 28px; height: 2px;
+    background: var(--electric);
+    border-radius: 2px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    color: var(--white-dim);
+    font-size: 1rem;
+    max-width: 500px;
+    line-height: 1.7;
+    margin-bottom: 60px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0 60px;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--navy-2); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-text p {
+    color: var(--white-dim);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .about-text p strong { color: var(--white); font-weight: 500; }
+
+  .about-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+  }
+
+  .pill {
+    background: var(--electric-dim);
+    border: 1px solid rgba(0,200,255,0.2);
+    color: var(--electric);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .about-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px;
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--electric));
+  }
+
+  .about-card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 24px;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 36px;
+    bottom: -24px;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .timeline-dot {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--electric-dim);
+    border: 1px solid rgba(0,200,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    color: var(--electric);
+    font-weight: 700;
+  }
+
+  .timeline-text strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+
+  .timeline-text span {
+    font-size: 0.8rem;
+    color: var(--white-dimmer);
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  #achievements { background: var(--navy); }
+
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .ach-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 30px 28px;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ach-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(26,108,255,0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .ach-card:hover { border-color: rgba(26,108,255,0.5); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+  .ach-card:hover::after { opacity: 1; }
+
+  .ach-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: var(--electric-dim);
+    border: 1px solid rgba(0,200,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+  }
+
+  .ach-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--white);
+  }
+
+  .ach-card p {
+    font-size: 0.85rem;
+    color: var(--white-dim);
+    line-height: 1.65;
+  }
+
+  .ach-tag {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── ZAPLOCK ── */
+  #zaplock { background: var(--navy-2); }
+
+  .zaplock-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .zaplock-desc {
+    color: var(--white-dim);
+    line-height: 1.8;
+    margin-bottom: 36px;
+  }
+
+  .zaplock-markets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .market-tag {
+    background: rgba(26,108,255,0.1);
+    border: 1px solid rgba(26,108,255,0.25);
+    color: var(--blue-light);
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .zaplock-visual {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(12px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .zaplock-visual::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,108,255,0.2), transparent 70%);
+  }
+
+  .locker-icon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    display: block;
+    filter: drop-shadow(0 0 20px rgba(0,200,255,0.4));
+  }
+
+  .zaplock-visual h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .zaplock-visual p {
+    font-size: 0.85rem;
+    color: var(--white-dimmer);
+  }
+
+  .stage-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(245,200,66,0.1);
+    border: 1px solid rgba(245,200,66,0.3);
+    color: var(--gold);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
+
+  /* ── MENTORSHIP ── */
+  #mentorship { background: var(--navy); }
+
+  .mentorship-hero {
+    background: linear-gradient(135deg, var(--navy-3), rgba(26,108,255,0.08));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 60px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mentorship-hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,200,255,0.08), transparent 70%);
+  }
+
+  .mentorship-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--electric-dim);
+    border: 1px solid rgba(0,200,255,0.25);
+    border-radius: 10px;
+    padding: 12px 20px;
+    margin-bottom: 24px;
+  }
+
+  .mentorship-stat .big { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--electric); }
+  .mentorship-stat .sm { font-size: 0.82rem; color: var(--white-dim); }
+
+  .mentorship-hero h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .mentorship-hero p { color: var(--white-dim); max-width: 500px; line-height: 1.75; }
+
+  .offerings-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .offering-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px 22px;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s;
+    text-align: center;
+  }
+
+  .offering-card:hover { border-color: rgba(26,108,255,0.5); transform: translateY(-3px); }
+
+  .offering-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
+
+  .offering-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--white);
+  }
+
+  .offering-card p { font-size: 0.78rem; color: var(--white-dimmer); line-height: 1.6; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--navy-2); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .contact-text h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .contact-text p { color: var(--white-dim); line-height: 1.75; margin-bottom: 36px; }
+
+  .contact-links { display: flex; flex-direction: column; gap: 14px; }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-decoration: none;
+    color: var(--white);
+    transition: all 0.25s;
+    backdrop-filter: blur(12px);
+  }
+
+  .contact-link:hover { border-color: rgba(26,108,255,0.5); transform: translateX(4px); }
+
+  .contact-link-icon {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    background: var(--electric-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-link-text strong { display: block; font-size: 0.88rem; font-weight: 500; margin-bottom: 2px; }
+  .contact-link-text span { font-size: 0.78rem; color: var(--white-dimmer); }
+
+  .contact-cta-box {
+    background: linear-gradient(135deg, rgba(26,108,255,0.15), rgba(0,200,255,0.05));
+    border: 1px solid rgba(26,108,255,0.3);
+    border-radius: 20px;
+    padding: 50px 40px;
+    text-align: center;
+  }
+
+  .contact-cta-box .emoji { font-size: 3rem; margin-bottom: 20px; display: block; }
+
+  .contact-cta-box h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .contact-cta-box p { color: var(--white-dim); font-size: 0.9rem; margin-bottom: 28px; line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid var(--border);
+    padding: 30px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-left {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--white);
+  }
+
+  .footer-left span { color: var(--electric); }
+
+  .footer-right { font-size: 0.8rem; color: var(--white-dimmer); }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    #hero { padding: 100px 24px 200px; }
+    .hero-stats { right: 24px; bottom: 24px; flex-direction: row; }
+    .stat-card { min-width: 100px; padding: 14px 18px; }
+    .stat-num { font-size: 1.4rem; }
+    .section-inner { padding: 70px 24px; }
+    .about-grid, .zaplock-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .achievements-grid { grid-template-columns: 1fr 1fr; }
+    .offerings-grid { grid-template-columns: 1fr 1fr; }
+    .divider { margin: 0 24px; }
+    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+    .mentorship-hero { padding: 36px 28px; }
+  }
+
+  @media (max-width: 560px) {
+    .achievements-grid { grid-template-columns: 1fr; }
+    .offerings-grid { grid-template-columns: 1fr 1fr; }
+    .hero-stats { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">MH<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#zaplock">ZapLock</a></li>
+    <li><a href="#mentorship">Mentorship</a></li>
+    <li><a href="#contact" class="nav-cta">Let's Connect</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Available for Mentorship</div>
+    <h1 class="hero-name">Muhammad<br><span class="accent">Hassan</span></h1>
+    <p class="hero-title">Founder & CEO at <strong>ZapLock</strong> &nbsp;·&nbsp; Entrepreneur &nbsp;·&nbsp; Speaker</p>
+    <p class="hero-desc">
+      Building the future of smart infrastructure in Pakistan — one IoT-powered locker at a time. With 2+ years in the startup ecosystem, I help student founders turn ideas into funded, structured ventures.
+    </p>
+    <div class="hero-actions">
+      <a href="#mentorship" class="btn-primary">
+        <span>🎯</span> Get Mentorship
+      </a>
+      <a href="#zaplock" class="btn-outline">
+        <span>🔒</span> Explore ZapLock
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Competitions Won</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">1M+</div>
+      <div class="stat-label">Funding (PKR)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">80+</div>
+      <div class="stat-label">Students Reached</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">Who I Am</div>
+        <h2 class="section-title">Entrepreneur.<br>Builder. Mentor.</h2>
+        <p>I'm Muhammad Hassan, Founder & CEO of <strong>ZapLock</strong> — a smart infrastructure startup building IoT-powered locker solutions for high-footfall environments across Pakistan.</p>
+        <p>With over <strong>2 years of deep experience</strong> in the startup ecosystem, I've gone from idea-stage to securing grants, winning competitions, entering incubation, and partnering with an acceleration program — all while still being a student.</p>
+        <p>Now, I channel that experience into mentoring the next generation of student founders, helping them avoid the pitfalls and fast-track their journey.</p>
+        <div class="about-pills">
+          <span class="pill">IoT & Smart Tech</span>
+          <span class="pill">Startup Strategy</span>
+          <span class="pill">Fundraising</span>
+          <span class="pill">Pitch Coaching</span>
+          <span class="pill">Product Thinking</span>
+          <span class="pill">Student Founder</span>
+        </div>
+      </div>
+
+      <div class="about-card reveal">
+        <div class="about-card-title">My Journey</div>
+        <div class="timeline-item">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-text">
+            <strong>Founded ZapLock</strong>
+            <span>Identified a gap in secure storage infrastructure in Pakistan</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-text">
+            <strong>10+ Competition Wins</strong>
+            <span>Validated the idea across national startup competitions</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">3</div>
+          <div class="timeline-text">
+            <strong>~PKR 1M Grant Secured</strong>
+            <span>Raised ideation-stage funding from a recognized grant program</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">4</div>
+          <div class="timeline-text">
+            <strong>Incubation & Acceleration</strong>
+            <span>Currently in incubation, partnered with an acceleration program</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">5</div>
+          <div class="timeline-text">
+            <strong>Guest Speaker</strong>
+            <span>1.5-hour session for 80+ students, invited by university professor</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-inner">
+    <div class="section-label reveal">Achievements</div>
+    <h2 class="section-title reveal">Milestones That<br>Define the Journey</h2>
+    <p class="section-sub reveal">Every win is proof that the process works — and proof I can teach it.</p>
+
+    <div class="achievements-grid">
+      <div class="ach-card reveal">
+        <div class="ach-icon">🏆</div>
+        <h3>10+ Competition Victories</h3>
+        <p>Competed and won across multiple national-level startup and entrepreneurship competitions, consistently validating ZapLock's concept and market fit.</p>
+        <span class="ach-tag">⭐ National Level</span>
+      </div>
+
+      <div class="ach-card reveal">
+        <div class="ach-icon">💰</div>
+        <h3>~PKR 1 Million Grant</h3>
+        <p>Secured nearly 1 million rupees in grant funding at the ideation stage — a significant milestone for any early-stage startup in the Pakistani ecosystem.</p>
+        <span class="ach-tag">⭐ Ideation Stage</span>
+      </div>
+
+      <div class="ach-card reveal">
+        <div class="ach-icon">🏢</div>
+        <h3>Incubation Program</h3>
+        <p>Currently based in a recognized incubation program, gaining access to mentors, resources, and the infrastructure needed to scale ZapLock.</p>
+        <span class="ach-tag">⭐ Currently Active</span>
+      </div>
+
+      <div class="ach-card reveal">
+        <div class="ach-icon">🚀</div>
+        <h3>Acceleration Partnership</h3>
+        <p>Partnered with an acceleration program to fast-track ZapLock's growth, expand the network, and prepare for the next stage of fundraising.</p>
+        <span class="ach-tag">⭐ Active Partnership</span>
+      </div>
+
+      <div class="ach-card reveal">
+        <div class="ach-icon">🎤</div>
+        <h3>Guest Speaker — 80+ Students</h3>
+        <p>Invited by a university professor to deliver a 1.5-hour entrepreneurship session to more than 80 students. Proof of concept for the mentorship model.</p>
+        <span class="ach-tag">⭐ University Session</span>
+      </div>
+
+      <div class="ach-card reveal">
+        <div class="ach-icon">⚡</div>
+        <h3>2+ Years in the Ecosystem</h3>
+        <p>Over two years navigating the startup ecosystem — from raw idea to funded, incubated company. Hard-earned knowledge that's now available to mentor others.</p>
+        <span class="ach-tag">⭐ Ongoing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ZAPLOCK -->
+<section id="zaplock">
+  <div class="section-inner">
+    <div class="zaplock-grid">
+      <div class="reveal">
+        <div class="section-label">My Startup</div>
+        <h2 class="section-title">ZapLock —<br>Smart Storage,<br>Redefined.</h2>
+        <p class="zaplock-desc">ZapLock is a smart infrastructure company delivering IoT-powered locker solutions across high-footfall environments in Pakistan. We combine hardware, software, and connectivity to make storage secure, cashless, and intelligent.</p>
+
+        <div class="zaplock-markets">
+          <span class="market-tag">🎓 Universities</span>
+          <span class="market-tag">🏢 Corporate Offices</span>
+          <span class="market-tag">💪 Gyms</span>
+          <span class="market-tag">🚇 Metro Stations</span>
+          <span class="market-tag">🛍️ Shopping Malls</span>
+          <span class="market-tag">🏥 Hospitals</span>
+          <span class="market-tag">🏠 Residential</span>
+          <span class="market-tag">🤝 Co-working</span>
+        </div>
+
+        <a href="#contact" class="btn-primary">
+          <span>🔗</span> Learn More / Partner
+        </a>
+      </div>
+
+      <div class="zaplock-visual reveal">
+        <span class="locker-icon">🔒</span>
+        <h3>ZapLock</h3>
+        <p>IoT-Powered Smart Lockers</p>
+        <div class="stage-badge">
+          <span>⚡</span> Launch Phase
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MENTORSHIP -->
+<section id="mentorship">
+  <div class="section-inner">
+    <div class="section-label reveal">Mentorship</div>
+    <h2 class="section-title reveal">I've Done the Hard Part.<br>Let Me Show You the Map.</h2>
+    <p class="section-sub reveal">You have the idea. I have the roadmap, the experience, and the proven framework to take you from confused student to confident founder.</p>
+
+    <div class="mentorship-hero reveal">
+      <div class="mentorship-stat">
+        <span class="big">80+</span>
+        <span class="sm">Students already<br>trained in 1 session</span>
+      </div>
+      <h3>Structured Mentorship for Student Founders</h3>
+      <p>Based on 2+ years of real startup experience — competitions, funding, incubation, pitching. Not theory. Not textbooks. The actual steps that work in Pakistan's ecosystem.</p>
+    </div>
+
+    <div class="offerings-grid">
+      <div class="offering-card reveal">
+        <span class="offering-icon">📚</span>
+        <h4>Live Sessions</h4>
+        <p>Topic-focused deep dives on idea validation, pitching, fundraising & more</p>
+      </div>
+      <div class="offering-card reveal">
+        <span class="offering-icon">🗺️</span>
+        <h4>Startup Roadmap</h4>
+        <p>A clear, phase-by-phase plan from idea to launch to first funding</p>
+      </div>
+      <div class="offering-card reveal">
+        <span class="offering-icon">🛠️</span>
+        <h4>Tools & Templates</h4>
+        <p>The exact frameworks, canvases, and pitch decks that actually win competitions</p>
+      </div>
+      <div class="offering-card reveal">
+        <span class="offering-icon">📄</span>
+        <h4>Study Material</h4>
+        <p>Curated content tailored to the Pakistani startup and investor ecosystem</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-label">Contact</div>
+        <h2 class="contact-text">
+          <span class="section-title">Got an idea?<br>Let's talk.</span>
+        </h2>
+        <p style="color:var(--white-dim); line-height:1.75; margin-bottom:36px;">Whether you're a student founder looking for direction, a university wanting a speaker, or someone interested in ZapLock — my inbox is open.</p>
+
+        <div class="contact-links">
+          <a href="https://linkedin.com/in/" target="_blank" class="contact-link">
+            <div class="contact-link-icon">💼</div>
+            <div class="contact-link-text">
+              <strong>LinkedIn</strong>
+              <span>Muhammad Hassan — Connect with me</span>
+            </div>
+          </a>
+          <a href="mailto:hello@muhammadhassan.com" class="contact-link">
+            <div class="contact-link-icon">📧</div>
+            <div class="contact-link-text">
+              <strong>Email</strong>
+              <span>hello@muhammadhassan.com</span>
+            </div>
+          </a>
+          <a href="https://wa.me/" target="_blank" class="contact-link">
+            <div class="contact-link-icon">💬</div>
+            <div class="contact-link-text">
+              <strong>WhatsApp</strong>
+              <span>Quick message for urgent queries</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-cta-box reveal">
+        <span class="emoji">🚀</span>
+        <h3>Ready to build something real?</h3>
+        <p>Join the next cohort of student founders getting structured mentorship from someone who's done it — grants, competitions, incubation and all.</p>
+        <a href="mailto:hello@muhammadhassan.com" class="btn-primary" style="display:inline-flex;">
+          <span>✉️</span> Book a Session
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">Muhammad Hassan<span>.</span></div>
+  <div class="footer-right">Founder & CEO, ZapLock &nbsp;·&nbsp; © 2025</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav active state
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--electric)' : '';
+    });
+  });
+</script>
+</body>
+</html>
